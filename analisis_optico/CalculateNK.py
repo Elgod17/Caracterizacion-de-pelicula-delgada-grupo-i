@@ -85,7 +85,7 @@ def fit_nk_per_wavelength(wvl, Rvals, angles_deg, n0_guess=1.0, k0_guess=1.0):
         return np.nan, np.nan, np.nan
 
 # --- Example usage: load data, loop wavelengths ---
-def main(input_csv='filt_reflectance_data.csv', output_csv='filt_nk_fitted.csv'):
+def main(input_csv='filt_reflectance_data.csv', output_csv='otra_vez_haciendo_esta_putenmierden_nk_fitted.csv'):
     df = pd.read_csv(input_csv)
     required = ['wavelength_nm', 'R30', 'R45', 'R60']
     for col in required:
@@ -127,17 +127,32 @@ def main(input_csv='filt_reflectance_data.csv', output_csv='filt_nk_fitted.csv')
     print(f"Saved fitted n,k to {output_csv}")
 
     # quick plots
+
+
     fig, axes = plt.subplots(2,1, figsize=(7,6), sharex=True)
+
     axes[0].plot(wavelengths, out['n'], marker='o', label='n')
-    axes[0].set_ylabel('n')
+    axes[0].set_ylabel('n', fontsize=34)         # ← Más grande
+    axes[0].tick_params(axis='both', labelsize=14)  # ← Ticks más grandes
     axes[0].grid(True)
+
     axes[1].plot(wavelengths, out['k'], marker='o', label='k')
-    axes[1].set_ylabel('k')
-    axes[1].set_xlabel('Wavelength (nm)')
+    axes[1].set_ylabel('k', fontsize=34)         # ← Más grande
+    axes[1].set_xlabel('Wavelength (nm)', fontsize=30)  # ← Más grande
+    axes[1].tick_params(axis='both', labelsize=14)      # ← Ticks más grandes
     axes[1].grid(True)
-    plt.suptitle('Fitted n and k')
+
+    plt.suptitle('Fitted n and k', fontsize=32)  # ← Título grande
     plt.tight_layout()
     plt.show()
 
+
+
+
+
+
+
+
+
 if __name__ == '__main__':
-    main("C:/Users/Asus/caracterizacion_pelicula_delgada/filt_reflectance_data.csv")
+    main("C:/Users/Asus/caracterizacion_pelicula_delgada/reflectance_data.csv")
